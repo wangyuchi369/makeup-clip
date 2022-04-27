@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="wangyuchi@127.0.0.1:6002 password" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="wangyuchi@127.0.0.1:6002" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" autoUploadExternalChanges="true">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="lanco11">
+      <paths name="wangyuchi@127.0.0.1:6002">
         <serverdata>
           <mappings>
             <mapping deploy="/makeup-clip" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="wangyuchi@127.0.0.1:6002 password">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/home/wangyuchi/makeup-clip" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="wangyuchi@127.0.0.1:6003 password">
-        <serverdata>
-          <mappings>
-            <mapping deploy="makeup-clip" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>

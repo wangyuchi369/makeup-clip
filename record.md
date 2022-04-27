@@ -15,3 +15,11 @@ python scripts/inference.py --exp_dir=results --checkpoint_path=pretrained_model
 pycharm 不能运行Ninjia命令行可以 [Ninja is required to load C++ extensions in Pycharm-爱代码爱编程 (icode.best)](https://icode.best/i/69588545838995)
 
 hyperstyle子文件库不能import， 添加interpret path[pycharm 添加python path_王浩的专栏-程序员信息网_pycharm 设置pythonpath - 程序员信息网 (i4k.xyz)](https://www.i4k.xyz/article/wh357589873/53204024)
+
+
+
+解决can't find model的问题：添加_init_.py文件，utils换个名字，使用绝对Import
+
+[How can I fix "No module named 'models'" error? (More details in post) : learnpython (reddit.com)](https://www.reddit.com/r/learnpython/comments/r53vnf/how_can_i_fix_no_module_named_models_error_more/)
+
+[Python 模块 | 菜鸟教程 (runoob.com)](https://www.runoob.com/python/python-modules.html)
