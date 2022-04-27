@@ -24,6 +24,7 @@ from options.test_options import TestOptions
 def run():
     test_opts = TestOptions().parse()
 
+    # 输出的路径
     out_path_results = os.path.join(test_opts.exp_dir, 'inference_results')
     out_path_coupled = os.path.join(test_opts.exp_dir, 'inference_coupled')
 
@@ -64,28 +65,31 @@ def run():
         with torch.no_grad():
             input_cuda = input_batch.cuda().float()
             tic = time.time()
+            # 对一个batch完成invert，这个函数内已经完成了指定次迭代
             result_batch, result_latents, result_deltas = run_inversion(input_cuda, net, opts,
                                                                         return_intermediate_results=True)
             toc = time.time()
             global_time.append(toc - tic)
 
-        for i in range(input_batch.shape[0]):
+        for i in range(input_batch.shape[0]):  # i索引每张图片
+            # 每个图片第iter_idx迭代结果，组成一个List
             results = [tensor2im(result_batch[i][iter_idx]) for iter_idx in range(opts.n_iters_per_batch)]
             im_path = dataset.paths[global_i]
 
             input_im = tensor2im(input_batch[i])
             res = np.array(input_im.resize(resize_amount))
             for idx, result in enumerate(results):
-                res = np.concatenate([res, np.array(result.resize(resize_amount))], axis=1)
+                res = np.concatenate([res, np.array(result.resize(resize_amount))], axis=1)  # 逐渐并起来成res
                 # save individual outputs
-                save_dir = os.path.join(out_path_results, str(idx))
+                save_dir = os.path.join(out_path_results, str(idx))  # 第idx次迭代
                 os.makedirs(save_dir, exist_ok=True)
                 result.resize(resize_amount).save(os.path.join(save_dir, os.path.basename(im_path)))
 
             # save coupled image with side-by-side results
             Image.fromarray(res).save(os.path.join(out_path_coupled, os.path.basename(im_path)))
-
-            all_latents[os.path.basename(im_path)] = result_latents[i][0]
+            print(result_latents[i].shape)
+            # 这儿应该改成-1表示最后一次的latents
+            all_latents[os.path.basename(im_path)] = result_latents[i][-1]
 
             if opts.save_weight_deltas:
                 weight_deltas_dir = os.path.join(test_opts.exp_dir, "weight_deltas")

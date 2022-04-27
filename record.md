@@ -12,5 +12,6 @@ python scripts/inference.py --exp_dir=results --checkpoint_path=pretrained_model
 
 
 
-C:\Users\wangy\Desktop\thesis\makeup-clip\hyperstyle/home/wangyuchi/makeup-clip/hyperstyle/scripts/inference.py
+pycharm 不能运行Ninjia命令行可以 [Ninja is required to load C++ extensions in Pycharm-爱代码爱编程 (icode.best)](https://icode.best/i/69588545838995)
 
+hyperstyle子文件库不能import， 添加interpret path[pycharm 添加python path_王浩的专栏-程序员信息网_pycharm 设置pythonpath - 程序员信息网 (i4k.xyz)](https://www.i4k.xyz/article/wh357589873/53204024)

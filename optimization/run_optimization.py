@@ -124,7 +124,7 @@ def main(args):
 
 if __name__ == "__main__":
     latents = np.load('../hyperstyle/results/latents.npy', allow_pickle=True).item()
-    orig_pic = 'img2.png'
+    orig_pic = 'img1.png'
     latent_code = np.expand_dims(np.array(latents[orig_pic]), axis=0)
     torch.save(torch.tensor(latent_code), '../church.pt')
     parser = argparse.ArgumentParser()
