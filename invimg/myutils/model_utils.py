@@ -4,7 +4,7 @@ from argparse import Namespace
 import sys
 sys.path.extend(['.', '..'])
 
-from models.stylegan2.model import Generator
+from invimg.models.stylegan2.model import Generator
 from invimg.models.hyperstyle import HyperStyle
 from invimg.models.encoders.e4e import e4e
 

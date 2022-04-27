@@ -6,7 +6,7 @@ from argparse import Namespace
 import os,sys
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 from invimg.models.encoders.psp import pSp
-from models.stylegan2.model import Generator
+from invimg.models.stylegan2.model import Generator
 from configs.paths_config import model_paths
 from invimg.models.hypernetworks.hypernetwork import SharedWeightsHyperNetResNet, SharedWeightsHyperNetResNetSeparable
 from myutils.resnet_mapping import RESNET_MAPPING
