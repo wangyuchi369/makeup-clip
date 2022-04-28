@@ -26,7 +26,7 @@ class TestOptions:
 		self.parser.add_argument('--test_workers', default=1, type=int, help='Number of test/inference dataloader workers')
 		self.parser.add_argument('--work_in_stylespace', default=False, action='store_true')
 
-		self.parser.add_argument('--n_images', type=int, default=1, help='Number of images to output. If None, run on all data')
+		self.parser.add_argument('--n_images', type=int, default=1, help='Number of images to output. If None, invert on all data')
 
 	def parse(self):
 		opts = self.parser.parse_args()

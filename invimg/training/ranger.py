@@ -93,7 +93,7 @@ class Ranger(Optimizer):
 
 				state = self.state[p]  # get state dict for this param
 
-				if len(state) == 0:  # if first time to run...init dictionary with our desired entries
+				if len(state) == 0:  # if first time to invert...init dictionary with our desired entries
 					# if self.first_run_check==0:
 					# self.first_run_check=1
 					# print("Initializing slow buffer...should not see this at load from saved model!")

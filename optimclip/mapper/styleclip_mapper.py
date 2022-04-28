@@ -44,7 +44,7 @@ class StyleCLIPMapper(nn.Module):
 		else:
 			print('Loading decoder weights from pretrained!')
 			ckpt = torch.load(self.opts.stylegan_weights)
-			self.decoder.load_state_dict(ckpt['g_ema'], strict=False)
+			self.decoder.load_state_dict(ckpt['gan_generator'], strict=False)
 
 	def forward(self, x, resize=True, latent_mask=None, input_code=False, randomize_noise=True,
 	            inject_latent=None, return_latents=False, alpha=None):

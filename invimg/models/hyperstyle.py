@@ -56,7 +56,7 @@ class HyperStyle(nn.Module):
             self.hypernet.load_state_dict(hypernet_ckpt, strict=False)
             print(f'Loading decoder weights from pretrained path: {self.opts.stylegan_weights}')
             ckpt = torch.load(self.opts.stylegan_weights)
-            self.decoder.load_state_dict(ckpt['g_ema'], strict=True)
+            self.decoder.load_state_dict(ckpt['gan_generator'], strict=True)
             self.__load_latent_avg(ckpt, repeat=self.n_styles)
             if self.opts.load_w_encoder:
                 self.w_encoder = self.__get_pretrained_w_encoder()

@@ -57,7 +57,7 @@ def load_direction_calculator(args):
 def load_stylegan_generator(args):
     stylegan_model = Generator(args.stylegan_size, 512, 8, channel_multiplier=2).cuda()
     checkpoint = torch.load(args.stylegan_weights)
-    stylegan_model.load_state_dict(checkpoint['g_ema'])
+    stylegan_model.load_state_dict(checkpoint['gan_generator'])
     return stylegan_model
 
 

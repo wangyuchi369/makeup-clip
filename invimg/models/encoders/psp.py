@@ -55,7 +55,7 @@ class pSp(nn.Module):
 			self.encoder.load_state_dict(encoder_ckpt, strict=False)
 			print('Loading decoder weights from pretrained!')
 			ckpt = torch.load(self.opts.stylegan_weights)
-			self.decoder.load_state_dict(ckpt['g_ema'], strict=False)
+			self.decoder.load_state_dict(ckpt['gan_generator'], strict=False)
 			if self.opts.learn_in_w:
 				self.__load_latent_avg(ckpt, repeat=1)
 			else:

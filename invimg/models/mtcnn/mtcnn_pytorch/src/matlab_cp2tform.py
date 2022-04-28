@@ -268,7 +268,7 @@ if __name__ == '__main__':
     x = [-1, 0, 4]
     y = [-1, -10, 4]
 
-    # In Matlab, run:
+    # In Matlab, invert:
     #
     #   uv = [u'; v'];
     #   xy = [x'; y'];

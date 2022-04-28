@@ -14,7 +14,7 @@ class TrainOptions:
         self.parser.add_argument('--exp_dir', type=str,
                                  help='Path to experiment output directory')
         self.parser.add_argument('--dataset_type', default='ffhq_encode', type=str,
-                                 help='Type of dataset/experiment to run')
+                                 help='Type of dataset/experiment to invert')
         self.parser.add_argument('--encoder_type', default='HyperNet', type=str,
                                  help='Which encoder to use')
         self.parser.add_argument('--input_nc', default=6, type=int,
@@ -60,7 +60,7 @@ class TrainOptions:
         self.parser.add_argument('--max_steps', default=500000, type=int,
                                  help='Maximum number of training steps')
         self.parser.add_argument('--max_val_batches', type=int, default=None,
-                                 help='Number of batches to run validation on. If None, run on all batches.')
+                                 help='Number of batches to invert validation on. If None, invert on all batches.')
         self.parser.add_argument('--image_interval', default=100, type=int,
                                  help='Interval for logging train images during training')
         self.parser.add_argument('--board_interval', default=50, type=int,

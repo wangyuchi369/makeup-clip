@@ -45,7 +45,7 @@ class e4e(nn.Module):
             self.encoder.load_state_dict(encoder_ckpt, strict=False)
             print(f'Loading decoder weights from pretrained path: {self.opts.stylegan_weights}')
             ckpt = torch.load(self.opts.stylegan_weights)
-            self.decoder.load_state_dict(ckpt['g_ema'], strict=True)
+            self.decoder.load_state_dict(ckpt['gan_generator'], strict=True)
             self.__load_latent_avg(ckpt, repeat=self.n_styles)
 
     def forward(self, x, latent=None, resize=True, input_code=False, randomize_noise=True,

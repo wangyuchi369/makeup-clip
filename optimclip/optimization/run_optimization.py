@@ -60,9 +60,9 @@ def main(args):
         img_orig, _ = g_ema([latent_code_init], input_is_latent=True, randomize_noise=True,weights_deltas=deltas)
 
     # 在S空间
-    # if args.work_in_stylespace:
+    # if opts.work_in_stylespace:
     #     with torch.no_grad():
-    #         _, _, latent_code_init = g_ema([latent_code_init], input_is_latent=True, return_latents=True)
+    #         _, _, latent_code_init = gan_generator([latent_code_init], input_is_latent=True, return_latents=True)
     #     latent = [s.detach().clone() for s in latent_code_init]
     #     for c, s in enumerate(latent):
     #         if c in STYLESPACE_INDICES_WITHOUT_TORGB:

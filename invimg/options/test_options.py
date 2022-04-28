@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-from configs.paths_config import model_paths
+from invimg.configs.paths_config import model_paths
 
 
 class TestOptions:
@@ -11,11 +11,11 @@ class TestOptions:
 
     def initialize(self):
         # arguments for inference script
-        self.parser.add_argument('--exp_dir', type=str,
+        self.parser.add_argument('--exp_dir', type=str, default='result',
                                  help='Path to experiment output directory')
-        self.parser.add_argument('--checkpoint_path', default=None, type=str,
+        self.parser.add_argument('--checkpoint_path', default='invimg/pretrained_models/hyperstyle_ffhq.pt', type=str,
                                  help='Path to HyperStyle model checkpoint')
-        self.parser.add_argument('--data_path', type=str, default='gt_images',
+        self.parser.add_argument('--data_path', type=str, default='input_img/',
                                  help='Path to directory of images to evaluate')
         self.parser.add_argument('--resize_outputs', action='store_true',
                                  help='Whether to resize outputs to 256x256 or keep at original output resolution')
@@ -24,7 +24,7 @@ class TestOptions:
         self.parser.add_argument('--test_workers', default=2, type=int,
                                  help='Number of test/inference dataloader workers')
         self.parser.add_argument('--n_images', type=int, default=None,
-                                 help='Number of images to output. If None, run on all data')
+                                 help='Number of images to output. If None, invert on all data')
         self.parser.add_argument('--save_weight_deltas', action='store_true',
                                  help='Whether to save the weight deltas of each image. Note: file weighs about 200MB.')
 
@@ -33,8 +33,8 @@ class TestOptions:
                                  help='Number of forward passes per batch during training.')
 
         # arguments for loading pre-trained encoder
-        self.parser.add_argument('--load_w_encoder', action='store_true', help='Whether to load the w e4e encoder.')
-        self.parser.add_argument('--w_encoder_checkpoint_path', default=model_paths["faces_w_encoder"], type=str,
+        self.parser.add_argument('--load_w_encoder', action='store_true', default=True, help='Whether to load the w e4e encoder.')
+        self.parser.add_argument('--w_encoder_checkpoint_path', default='invimg/pretrained_models/faces_w_encoder.pt', type=str,
                                  help='Path to pre-trained W-encoder.')
         self.parser.add_argument('--w_encoder_type', default='WEncoder',
                                  help='Encoder type for the encoder used to get the initial inversion')
@@ -50,6 +50,10 @@ class TestOptions:
                                  help='Number of forward passes per batch for ReStyle-e4e inference.')
         self.parser.add_argument('--finetuned_generator_checkpoint_path', type=str, default=model_paths["stylegan_pixar"],
                                  help='Path to fine-tuned generator checkpoint used for domain adaptation.')
+        self.parser.add_argument('--input_img', type=str,
+                                 help='辅助参数')
+        self.parser.add_argument('--text', type=str,
+                                 help='辅助参数')
 
     def parse(self):
         opts = self.parser.parse_args()

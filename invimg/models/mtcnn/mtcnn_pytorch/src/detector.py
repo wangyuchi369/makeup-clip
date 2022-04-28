@@ -55,7 +55,7 @@ def detect_faces(image, min_face_size=20.0,
     bounding_boxes = []
 
     with torch.no_grad():
-        # run P-Net on different scales
+        # invert P-Net on different scales
         for s in scales:
             boxes = run_first_stage(image, pnet, scale=s, threshold=thresholds[0])
             bounding_boxes.append(boxes)

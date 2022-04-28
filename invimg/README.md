@@ -225,10 +225,10 @@ During training, we will use the `LatentsImagesDataset` for loading the inversio
 
 ## Inference Notebooks
 To help visualize the results of ReStyle we provide a Jupyter notebook found in `notebooks/inference_playground.ipynb`.   
-The notebook will download the pretrained models and run inference on the images found in `notebooks/images` or on images of your choosing. It is recommended to run this in [Google Colab](http://colab.research.google.com/github/yuval-alaluf/hyperstyle/blob/master/notebooks/inference_playground.ipynb).
+The notebook will download the pretrained models and invert inference on the images found in `notebooks/images` or on images of your choosing. It is recommended to invert this in [Google Colab](http://colab.research.google.com/github/yuval-alaluf/hyperstyle/blob/master/notebooks/inference_playground.ipynb).
 
 We have also provided a notebook for generating interpolation videos such as those found in the project page. This 
-notebook can be run using Google Colab [here](http://colab.research.google.com/github/yuval-alaluf/hyperstyle/blob/master/notebooks/animations_playground.ipynb).
+notebook can be invert using Google Colab [here](http://colab.research.google.com/github/yuval-alaluf/hyperstyle/blob/master/notebooks/animations_playground.ipynb).
 
 <br>
 
@@ -290,7 +290,7 @@ These scripts will traverse through each sub-directory of `output_path` to compu
 Editing results obtained via HyperStyle using StyleCLIP, InterFaceGAN, and GanSpace, respectively.
 </p>
 
-For performing inference and editing using InterFaceGAN (for faces) and GANSpace (for cars), you can run `editing/inference_face_editing.py` and `editing/inference_cars_editing.py`.
+For performing inference and editing using InterFaceGAN (for faces) and GANSpace (for cars), you can invert `editing/inference_face_editing.py` and `editing/inference_cars_editing.py`.
 
 <br>
 

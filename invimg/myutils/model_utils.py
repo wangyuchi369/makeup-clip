@@ -38,7 +38,7 @@ def load_generator(checkpoint_path, device='cuda'):
     print(f"Loading generator from checkpoint: {checkpoint_path}")
     generator = Generator(1024, 512, 8, channel_multiplier=2)
     ckpt = torch.load(checkpoint_path, map_location='cpu')
-    generator.load_state_dict(ckpt['g_ema'])
+    generator.load_state_dict(ckpt['gan_generator'])
     generator.eval()
     generator.to(device)
     return generator

@@ -4,9 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cec6271-2116-438b-9f1a-9b3283c92fa0" name="Changes" comment="add deltas to make pics more realistic">
+    <list default="true" id="9cec6271-2116-438b-9f1a-9b3283c92fa0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/docs/blunt_interfacegan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/docs/cars_ganspace.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/docs/dicaprio_styleclip.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/docs/domain_adaptation.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/docs/teaser.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/editing/styleclip/edit.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/editing/styleclip/edit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/models/encoders/e4e.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/encoders/e4e.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/models/encoders/psp.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/encoders/psp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/models/hyperstyle.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/hyperstyle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/models/mtcnn/mtcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/mtcnn/mtcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/models/mtcnn/mtcnn_pytorch/src/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/mtcnn/mtcnn_pytorch/src/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/models/mtcnn/mtcnn_pytorch/src/matlab_cp2tform.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/mtcnn/mtcnn_pytorch/src/matlab_cp2tform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/myutils/model_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/myutils/model_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/notebooks/animations_playground.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/notebooks/animations_playground.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/notebooks/inference_playground.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/notebooks/inference_playground.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/options/test_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/options/test_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/options/train_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/options/train_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/scripts/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/scripts/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/training/ranger.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/training/ranger.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optim.py" beforeDir="false" afterPath="$PROJECT_DIR$/optim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/criteria/clip_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/criteria/clip_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/criteria/id_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/criteria/id_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/mapper/options/test_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/mapper/options/test_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/mapper/styleclip_mapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/mapper/styleclip_mapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/mapper/training/ranger.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/mapper/training/ranger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/models/facial_recognition/model_irse.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/models/facial_recognition/model_irse.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/notebooks/mapper_playground.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/notebooks/mapper_playground.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/optimization/run_optimization.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/optimization/run_optimization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record.md" beforeDir="false" afterPath="$PROJECT_DIR$/record.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +79,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -97,7 +126,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/optim.py" />
-      <option name="PARAMETERS" value="--exp_dir=results --checkpoint_path=invimg/pretrained_models/hyperstyle_ffhq.pt --data_path=invimg/input_imgs/ --test_batch_size=4 --test_workers=4 --n_iters_per_batch=5 --load_w_encoder --w_encoder_checkpoint_path invimg/pretrained_models/faces_w_encoder.pt" />
+      <option name="PARAMETERS" value="--input_img=input_img/img5.png   --text=&quot;a person with purple hair&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -200,7 +229,7 @@
       <workItem from="1651055308072" duration="715000" />
       <workItem from="1651056053357" duration="2364000" />
       <workItem from="1651061316409" duration="7595000" />
-      <workItem from="1651117437511" duration="2892000" />
+      <workItem from="1651117437511" duration="18478000" />
     </task>
     <task id="LOCAL-00001" summary="solve the problem of import_err">
       <created>1651061026910</created>
@@ -230,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651070736629</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="combine two components naively">
+      <created>1651133780885</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651133780885</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,13 +276,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="solve the problem of import_err" />
     <MESSAGE value="add deltas to make pics more realistic" />
-    <option name="LAST_COMMIT_MESSAGE" value="add deltas to make pics more realistic" />
+    <MESSAGE value="combine two components naively" />
+    <option name="LAST_COMMIT_MESSAGE" value="combine two components naively" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/makeup_clip$refinement_blocks.coverage" NAME="refinement_blocks Coverage Results" MODIFIED="1651058238772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg/models/hypernetworks" />
     <SUITE FILE_PATH="coverage/makeup_clip$restyle_e4e_encoders.coverage" NAME="restyle_e4e_encoders Coverage Results" MODIFIED="1651058229583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg/models/encoders" />
-    <SUITE FILE_PATH="coverage/makeup_clip$run_optimization.coverage" NAME="run_optimization Coverage Results" MODIFIED="1651070569064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/optimclip/optimization" />
-    <SUITE FILE_PATH="coverage/makeup_clip$optim.coverage" NAME="optim Coverage Results" MODIFIED="1651133628503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/makeup_clip$inference.coverage" NAME="inference Coverage Results" MODIFIED="1651067370126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg" />
+    <SUITE FILE_PATH="coverage/makeup_clip$run_optimization.coverage" NAME="run_optimization Coverage Results" MODIFIED="1651150626109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/optimclip/optimization" />
+    <SUITE FILE_PATH="coverage/makeup_clip$optim.coverage" NAME="optim Coverage Results" MODIFIED="1651157351538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/makeup_clip$inference.coverage" NAME="inference Coverage Results" MODIFIED="1651150382478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg" />
   </component>
 </project>
