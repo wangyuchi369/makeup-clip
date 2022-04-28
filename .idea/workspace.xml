@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cec6271-2116-438b-9f1a-9b3283c92fa0" name="Changes" comment="">
+    <list default="true" id="9cec6271-2116-438b-9f1a-9b3283c92fa0" name="Changes" comment="add deltas to make pics more realistic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invimg/datasets/inference_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/datasets/inference_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invimg/models/hyperstyle.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/models/hyperstyle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invimg/myutils/model_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/myutils/model_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invimg/scripts/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/scripts/inference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimclip/models/stylegan2/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/models/stylegan2/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimclip/models/stylegan2/op/fused_act.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/models/stylegan2/op/fused_act.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimclip/models/stylegan2/op/upfirdn2d.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/models/stylegan2/op/upfirdn2d.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimclip/optimization/run_optimization.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/optimization/run_optimization.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optim.py" beforeDir="false" afterPath="$PROJECT_DIR$/optim.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,12 +31,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="28NRxRcg7MSj3TLjUrfPjfSUKOn" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "true",
@@ -53,7 +50,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -61,7 +58,7 @@
       <recent name="C:\Users\wangy\Desktop\thesis\makeup-clip\optimclip\models\stylegan2" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.run_optimization">
+  <component name="RunManager" selected="Python.optim">
     <configuration name="inference" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="makeup-clip" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -91,6 +88,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PATH" value="/home/wangyuchi/anaconda3/envs/hyperstyle_env/bin" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -183,9 +181,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.optim" />
         <item itemvalue="Python.run_optimization" />
         <item itemvalue="Python.inference" />
-        <item itemvalue="Python.optim" />
         <item itemvalue="Python.refinement_blocks" />
         <item itemvalue="Python.restyle_e4e_encoders" />
       </list>
@@ -201,7 +199,8 @@
       <updated>1651055305994</updated>
       <workItem from="1651055308072" duration="715000" />
       <workItem from="1651056053357" duration="2364000" />
-      <workItem from="1651061316409" duration="6841000" />
+      <workItem from="1651061316409" duration="7595000" />
+      <workItem from="1651117437511" duration="2892000" />
     </task>
     <task id="LOCAL-00001" summary="solve the problem of import_err">
       <created>1651061026910</created>
@@ -217,21 +216,37 @@
       <option name="project" value="LOCAL" />
       <updated>1651061372401</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add deltas to make pics more realistic">
+      <created>1651070673871</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1651070673871</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add deltas to make pics more realistic">
+      <created>1651070736629</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1651070736629</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="solve the problem of import_err" />
-    <option name="LAST_COMMIT_MESSAGE" value="solve the problem of import_err" />
+    <MESSAGE value="add deltas to make pics more realistic" />
+    <option name="LAST_COMMIT_MESSAGE" value="add deltas to make pics more realistic" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/makeup_clip$refinement_blocks.coverage" NAME="refinement_blocks Coverage Results" MODIFIED="1651058238772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg/models/hypernetworks" />
     <SUITE FILE_PATH="coverage/makeup_clip$restyle_e4e_encoders.coverage" NAME="restyle_e4e_encoders Coverage Results" MODIFIED="1651058229583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg/models/encoders" />
     <SUITE FILE_PATH="coverage/makeup_clip$run_optimization.coverage" NAME="run_optimization Coverage Results" MODIFIED="1651070569064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/optimclip/optimization" />
-    <SUITE FILE_PATH="coverage/makeup_clip$optim.coverage" NAME="optim Coverage Results" MODIFIED="1651066556068" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/makeup_clip$optim.coverage" NAME="optim Coverage Results" MODIFIED="1651133628503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/makeup_clip$inference.coverage" NAME="inference Coverage Results" MODIFIED="1651067370126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg" />
   </component>
 </project>
