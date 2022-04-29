@@ -14,7 +14,8 @@ from optimclip.criteria.id_loss import IDLoss
 from optimclip.models.stylegan2.model import Generator
 import clip
 
-
+from PIL import Image
+from torchvision import transforms
 
 class Options:
     def __init__(self):
@@ -27,7 +28,8 @@ class Options:
         """
         self.parser.add_argument('--input_img', type=str, required=True, help='输入图片的路径和文件名')
         self.parser.add_argument("--text", type=str, required=True, nargs='+', help="描述修改的文本")
-        self.parser.add_argument("--gan_model", type=str, default="optimclip/pretrained_models/stylegan2-ffhq-config-f.pt",
+        self.parser.add_argument("--gan_model", type=str,
+                                 default="optimclip/pretrained_models/stylegan2-ffhq-config-f.pt",
                                  help="预训练的stylegan模型")
         self.parser.add_argument("--size", type=int, default=1024, help="图片分辨率")
         self.parser.add_argument("--alpha", type=float, default=0.1, help='初始学习率')
@@ -40,13 +42,15 @@ class Options:
         self.parser.add_argument('--id_model', default='optimclip/pretrained_models/model_ir_se50.pth', type=str,
                                  help="图像识别网络")
         self.parser.add_argument("--save_intermediate_image_every", type=int, default=20,
-                            help="每隔一定步数保存结果")
+                                 help="每隔一定步数保存结果")
+        self.parser.add_argument("--bbox", type=list, default=[413,537,254,749],
+                                 help="部位位置（上下左右的顺序）")
         return self.parser.parse_args()
 
 
-
-
 invert()
+
+
 def get_lr(t, initial_lr, rampdown=0.25, rampup=0.05):
     lr_ramp = min(1, (1 - t) / rampdown)
     lr_ramp = 0.5 - 0.5 * math.cos(lr_ramp * math.pi)
@@ -62,10 +66,17 @@ def get_ganmodel(opts):
     generator = generator.eval().cuda()
     return generator
 
+
 if __name__ == '__main__':
+
     opts = Options().get_args()
     # 分词并拼接
     edit_text = torch.cat([clip.tokenize(opts.text)]).cuda()
+    orig_img = Image.open(opts.input_img)
+    convert = transforms.ToTensor()
+    normalize = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+    orig_img = normalize(convert(orig_img))
+    orig_img = orig_img.unsqueeze(0).cuda()
 
     orig_pic = str(opts.input_img).split('/')[-1]
     latent_path = 'invimg/results/latents.npy'
@@ -78,13 +89,12 @@ if __name__ == '__main__':
 
     os.makedirs(opts.results, exist_ok=True)
 
-
     gan_generator = get_ganmodel(opts)
 
     # 生成初始图片
     with torch.no_grad():
-        inv_img, _ = gan_generator([latent_code_init], input_is_latent=True, randomize_noise=True, weights_deltas=deltas)
-
+        inv_img, _ = gan_generator([latent_code_init], input_is_latent=True, randomize_noise=True,
+                                   weights_deltas=deltas)
 
     latent = latent_code_init.clone().detach()
     latent.requires_grad = True
@@ -103,11 +113,22 @@ if __name__ == '__main__':
         if opts.id_lambda > 0:
             i_loss = id_loss(img_gen, inv_img)[0]
         else:
-            i_loss = 0   # 不需要idloss就不跑模型了，节省时间
+            i_loss = 0  # 不需要idloss就不跑模型了，节省时间
 
         latent_loss = ((latent_code_init - latent) ** 2).sum()
 
-        loss = c_loss + opts.latent_lambda * latent_loss + opts.id_lambda * i_loss
+        img_loss_sum = torch.sum(torch.square(orig_img - img_gen))
+        bbox = opts.bbox
+        crop_area = (orig_img - img_gen)[:][:][bbox[0]:bbox[1]][bbox[2]:bbox[3]]
+        img_loss = img_loss_sum - torch.sum(torch.square(crop_area))
+        area = opts.size ** 2 - abs(bbox[0]-bbox[1]) * abs(bbox[2]-bbox[3]) # 剩余的面积
+        img_loss /= area
+
+
+        print('latent_loss', latent_loss)
+        print('img_loss', img_loss)
+
+        loss = c_loss + opts.latent_lambda * latent_loss + opts.id_lambda * i_loss + opts.img_lambda * img_loss
 
         optimizer.zero_grad()
         loss.backward()
@@ -124,8 +145,6 @@ if __name__ == '__main__':
 
             torchvision.utils.save_image(img_gen, f"results/{str(i).zfill(5)}.jpg", normalize=True, range=(-1, 1))
 
-
-        final_result = torch.cat([inv_img, img_gen])
+        final_result = torch.cat([orig_img, inv_img, img_gen])
         torchvision.utils.save_image(final_result.detach().cpu(), os.path.join(opts.results, "final_result.jpg"),
                                      normalize=True, scale_each=True, range=(-1, 1))
-

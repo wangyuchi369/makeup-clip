@@ -39,3 +39,11 @@ hyperstyle子文件库不能import， 添加interpret path[pycharm 添加python 
 #### clone和detach
 
 [(4条消息) 【Pytorch】对比clone、detach以及copy_等张量复制操作_guofei_fly的博客-CSDN博客_pytorch 复制张量](https://blog.csdn.net/guofei_fly/article/details/104486708)
+
+
+
+### 图片读入后转化为归一化tensor
+
+[(4条消息) Pytorch：torchvision.transforms_宁静致远*的博客-CSDN博客](https://blog.csdn.net/weixin_40522801/article/details/106037353)
+
+[数据预处理中的归一化与反归一化_TracelessLe的专栏-程序员资料_归一化和反归一化公式 - 程序员资料 (4k8k.xyz)](http://www.4k8k.xyz/article/TracelessLe/116021329)
