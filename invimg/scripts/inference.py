@@ -19,10 +19,11 @@ from myutils.common import tensor2im
 from myutils.inference_utils import run_inversion
 from invimg.myutils.model_utils import load_model
 from options.test_options import TestOptions
-
+from run_option.option import Options
 
 def invert():
-    test_opts = TestOptions().parse()
+    # test_opts = TestOptions().parse()
+    test_opts = Options().get_args()
     # 输出的路径
     out_path_results = os.path.join(test_opts.exp_dir, 'inference_results')
     out_path_coupled = os.path.join(test_opts.exp_dir, 'inference_coupled')

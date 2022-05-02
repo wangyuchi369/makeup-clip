@@ -15,7 +15,7 @@
 # Lookahead paper --> MZhang,G Hinton  https://arxiv.org/abs/1907.08610
 
 # summary of changes:
-# 4/11/20 - add gradient centralization option.  Set new testing benchmark for accuracy with it, toggle with use_gc flag at init.
+# 4/11/20 - add gradient centralization run_option.  Set new testing benchmark for accuracy with it, toggle with use_gc flag at init.
 # full code integration with all updates at param level instead of group, moves slow weights into state dict (from generic weights),
 # supports group learning rates (thanks @SHolderbach), fixes sporadic load from saved model issues.
 # changes 8/31/19 - fix references to *self*.N_sma_threshold;
