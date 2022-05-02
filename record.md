@@ -47,3 +47,11 @@ hyperstyle子文件库不能import， 添加interpret path[pycharm 添加python 
 [(4条消息) Pytorch：torchvision.transforms_宁静致远*的博客-CSDN博客](https://blog.csdn.net/weixin_40522801/article/details/106037353)
 
 [数据预处理中的归一化与反归一化_TracelessLe的专栏-程序员资料_归一化和反归一化公式 - 程序员资料 (4k8k.xyz)](http://www.4k8k.xyz/article/TracelessLe/116021329)
+
+### 五官的实例分割
+
+使用[zllrunning/face-parsing.PyTorch: Using modified BiSeNet for face parsing in PyTorch (github.com)](https://github.com/zllrunning/face-parsing.PyTorch)完成实例分割。
+
+原方法同时分割许多类，划分非常精细，如左眼右眼，上唇下唇。我们写一块小代码，获取用户指定的部分，如[左眼、右眼、鼻子]，将每个指定部分变成白色，其他全部变成黑色。
+
+![image-20220502140221231](https://cdn.jsdelivr.net/gh/wangyuchi369/picbed/img/202205021404629.png)
