@@ -16,6 +16,7 @@ from PIL import Image
 from torchvision import transforms
 from run_option.option import Options
 
+
 # invert()
 
 def get_ganmodel(opts):
@@ -26,11 +27,13 @@ def get_ganmodel(opts):
     generator = generator.eval().cuda()
     return generator
 
+
 def get_lr(t, initial_lr, rampdown=0.25, rampup=0.05):
     lr_ramp = min(1, (1 - t) / rampdown)
     lr_ramp = 0.5 - 0.5 * math.cos(lr_ramp * math.pi)
     lr_ramp = lr_ramp * min(1, t / rampup)
     return initial_lr * lr_ramp
+
 
 def get_init_latent(orig_pic):
     latent_path = 'invimg/results/latents.npy'
@@ -46,6 +49,7 @@ def get_init_latent(orig_pic):
     deltas = np.load(deltas_path, allow_pickle=True)
     deltas = [torch.from_numpy(w).cuda() if w is not None else None for w in deltas]
     return latent_code_init, deltas
+
 
 def get_imgloss(region, orig_img, img_gen, mask):
     img_loss_sum = torch.sum(torch.square(orig_img - img_gen))
@@ -80,7 +84,7 @@ def optim(text, input_img, opts, region):
     orig_img = orig_img.unsqueeze(0).cuda()
 
     orig_pic = str(input_img).split('/')[-1]
-    latent_code_init, deltas =  get_init_latent(orig_pic)
+    latent_code_init, deltas = get_init_latent(orig_pic)
 
     os.makedirs(opts.results, exist_ok=True)
     gan_generator = get_ganmodel(opts)
@@ -96,7 +100,6 @@ def optim(text, input_img, opts, region):
     clip_loss = CLIPLoss(opts)
     id_loss = IDLoss(opts)
     optimizer = torch.optim.Adam([latent], lr=opts.alpha)
-
 
     # 得到感兴趣的区域的mask
     mask = None
@@ -146,4 +149,4 @@ def optim(text, input_img, opts, region):
 
 if __name__ == '__main__':
     opts = Options().get_args()
-    optim(text='a person with purple hair', input_img='input_img/img1.png', opts=opts, region={'organ':['hair']})
+    optim(text='a person with purple hair', input_img='input_img/img1.png', opts=opts, region={'organ': ['hair']})
