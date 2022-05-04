@@ -63,3 +63,17 @@ hyperstyle子文件库不能import， 添加interpret path[pycharm 添加python 
 计算mask二范数时直接将图像差点乘mask tensor即可，因为都是0和1，mask区域的面积可以直接用一范数
 
 ![image-20220502204043760](https://cdn.jsdelivr.net/gh/wangyuchi369/picbed/img/202205022040397.png)
+
+
+### Jupyter 无法处理命令行
+
+
+A more elegant solution would be:
+
+```args, unknown = parser.parse_known_args()```
+
+instead of
+
+```args = parser.parse_args()```
+
+[python - How to fix ipykernel_launcher.py: error: unrecognized arguments in jupyter? - Stack Overflow](https://stackoverflow.com/questions/48796169/how-to-fix-ipykernel-launcher-py-error-unrecognized-arguments-in-jupyter)

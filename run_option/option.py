@@ -19,14 +19,14 @@ class Options:
                                  help="latent-code损失的系数")
         self.parser.add_argument("--img_lambda", type=float, default=0, help="图片损失的系数")
         self.parser.add_argument("--id_lambda", type=float, default=0.001, help="面部损失的系数")
-        self.parser.add_argument("--results", type=str, default='results', help="结果放置的文件夹")
+        self.parser.add_argument("--results", type=str, default='result/opt/', help="结果放置的文件夹")
         self.parser.add_argument('--id_model', default='optimclip/pretrained_models/model_ir_se50.pth', type=str,
                                  help="图像识别网络")
         self.parser.add_argument("--save_intermediate_image_every", type=int, default=20,
                                  help="每隔一定步数保存结果")
         # self.parser.add_argument("--bbox", type=list, default=[413,537,254,749],
         #                          help="部位位置（上下左右的顺序）")
-        self.parser.add_argument('--exp_dir', type=str, default='result',
+        self.parser.add_argument('--exp_dir', type=str, default='result/inv',
                                  help='Path to experiment output directory')
         self.parser.add_argument('--checkpoint_path', default='invimg/pretrained_models/hyperstyle_ffhq.pt', type=str,
                                  help='Path to HyperStyle model checkpoint')
@@ -40,7 +40,7 @@ class Options:
                                  help='Number of test/inference dataloader workers')
         self.parser.add_argument('--n_images', type=int, default=None,
                                  help='Number of images to output. If None, invert on all data')
-        self.parser.add_argument('--save_weight_deltas', action='store_true',
+        self.parser.add_argument('--save_weight_deltas', action='store_true', default=True,
                                  help='Whether to save the weight deltas of each image. Note: file weighs about 200MB.')
 
         # arguments for iterative inference
@@ -69,4 +69,4 @@ class Options:
         self.parser.add_argument('--finetuned_generator_checkpoint_path', type=str,
                                  default=model_paths["stylegan_pixar"],
                                  help='Path to fine-tuned generator checkpoint used for domain adaptation.')
-        return self.parser.parse_args()
+        return self.parser.parse_known_args()[0]

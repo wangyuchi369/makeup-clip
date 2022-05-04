@@ -36,16 +36,16 @@ def get_lr(t, initial_lr, rampdown=0.25, rampup=0.05):
 
 
 def get_init_latent(orig_pic):
-    latent_path = 'invimg/results/latents.npy'
+    latent_path = 'result/inv/latents.npy'
     try:
         latents = np.load(latent_path, allow_pickle=True).item()
         latent_code = np.expand_dims(np.array(latents[orig_pic]), axis=0)
-    except Exception:
+    except FileNotFoundError:
         invert()  # 没有当前图片的latent code，再invert一遍
         latents = np.load(latent_path, allow_pickle=True).item()
         latent_code = np.expand_dims(np.array(latents[orig_pic]), axis=0)
     latent_code_init = torch.tensor(latent_code).cuda()
-    deltas_path = 'invimg/results/weight_deltas/' + orig_pic.split('.')[0] + '.npy'
+    deltas_path = 'result/inv/weight_deltas/' + orig_pic.split('.')[0] + '.npy'
     deltas = np.load(deltas_path, allow_pickle=True)
     deltas = [torch.from_numpy(w).cuda() if w is not None else None for w in deltas]
     return latent_code_init, deltas
@@ -140,13 +140,13 @@ def optim(text, input_img, opts, region):
         if opts.save_intermediate_image_every > 0 and i % opts.save_intermediate_image_every == 0:
             with torch.no_grad():
                 img_gen, _ = gan_generator([latent], input_is_latent=True, randomize_noise=True)
-            torchvision.utils.save_image(img_gen, f"results/{str(i).zfill(5)}.jpg", normalize=True, range=(-1, 1))
+            torchvision.utils.save_image(img_gen, f"result/opt/{str(i).zfill(5)}.jpg", normalize=True, range=(-1, 1))
 
-        final_result = torch.cat([orig_img, inv_img, img_gen, mask])
-        torchvision.utils.save_image(final_result.detach().cpu(), os.path.join(opts.results, "final_result.jpg"),
-                                     normalize=True, scale_each=True, range=(-1, 1))
-
+    final_result = torch.cat([orig_img, inv_img, img_gen, mask])
+    torchvision.utils.save_image(final_result.detach().cpu(), os.path.join(opts.results, "final_result.jpg"),
+                                 normalize=True, scale_each=True, range=(-1, 1))
+    return final_result
 
 if __name__ == '__main__':
     opts = Options().get_args()
-    optim(text='a person with purple hair', input_img='input_img/img1.png', opts=opts, region={'organ': ['hair']})
+    result = optim(text='a person with purple hair', input_img='input_img/img1.png', opts=opts, region={'organ': ['hair']})
