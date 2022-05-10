@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="693dfb20-5162-4221-a2f8-71aacc40ae9c" name="lanco12">
+        <fileTransfer rootFolder="/home/wangyuchi" accessType="SFTP" host="127.0.0.1" port="6003" sshConfigId="57e3edb9-5e84-4fcf-af2b-5b31ada66178" sshConfig="wangyuchi@127.0.0.1:6003 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
