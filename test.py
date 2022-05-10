@@ -14,10 +14,11 @@ from faceparsing.test import evaluate
 
 from PIL import Image
 from torchvision import transforms
-from run_option.option import Options
+from run_config.config import Options
 
-
+STYLESPACE_DIMENSIONS = [512 for _ in range(15)] + [256, 256, 256] + [128, 128, 128] + [64, 64, 64] + [32, 32]
 # invert()
+STYLESPACE_INDICES_WITHOUT_TORGB = [i for i in range(len(STYLESPACE_DIMENSIONS)) if i not in list(range(1, len(STYLESPACE_DIMENSIONS), 3))]
 
 def get_ganmodel(opts):
     generator = Generator(opts.size, 512, 8, channel_multiplier=2)
@@ -89,17 +90,23 @@ def optim(text, input_img, opts, region):
     os.makedirs(opts.results, exist_ok=True)
     gan_generator = get_ganmodel(opts)
 
+
+    with torch.no_grad():
+        latent_code_init = gan_generator([latent_code_init], input_is_latent=True, return_latents=True)
     # 生成初始图片
     with torch.no_grad():
-        inv_img, _ = gan_generator([latent_code_init], input_is_latent=True, randomize_noise=True,
-                                   weights_deltas=deltas)
-
+        inv_img, _ = gan_generator([latent_code_init], input_is_latent=True,input_is_stylespace=True, randomize_noise=True,
+                                   )
+    latent = [s.detach().clone() for s in latent_code_init]
+    for c, s in enumerate(latent):
+        if c in STYLESPACE_INDICES_WITHOUT_TORGB:
+            s.requires_grad = True
     latent = latent_code_init.clone().detach()
     latent.requires_grad = True
 
     clip_loss = CLIPLoss(opts)
     id_loss = IDLoss(opts)
-    optimizer = torch.optim.Adam([latent], lr=opts.alpha)
+    optimizer = torch.optim.Adam(latent, lr=opts.alpha)
 
     # 得到感兴趣的区域的mask
     mask = None
@@ -115,14 +122,14 @@ def optim(text, input_img, opts, region):
         t = i / opts.step
         lr = get_lr(t, opts.alpha)
         optimizer.param_groups[0]["lr"] = lr
-        img_gen, _ = gan_generator([latent], input_is_latent=True, randomize_noise=True, weights_deltas=deltas)
+        img_gen, _ = gan_generator([latent], input_is_latent=True, input_is_stylespace=True, randomize_noise=True)
 
         c_loss = clip_loss(img_gen, edit_text)
         if opts.id_lambda > 0:
             i_loss = id_loss(img_gen, inv_img)[0]
         else:
             i_loss = 0  # 不需要idloss就不跑模型了，节省时间
-        latent_loss = ((latent_code_init - latent) ** 2).sum()
+        latent_loss = sum([((latent_code_init[c] - latent[c]) ** 2).sum() for c in range(len(latent_code_init))])
         img_loss = get_imgloss(region, orig_img, img_gen, mask)
         # print('latent_loss', latent_loss)
         # print('img_loss', img_loss)
@@ -139,7 +146,7 @@ def optim(text, input_img, opts, region):
         )
         if opts.save_intermediate_image_every > 0 and i % opts.save_intermediate_image_every == 0:
             with torch.no_grad():
-                img_gen, _ = gan_generator([latent], input_is_latent=True, randomize_noise=True)
+                img_gen, _ = gan_generator([latent], input_is_latent=True, input_is_stylespace=True, randomize_noise=True)
             torchvision.utils.save_image(img_gen, f"result/opt/{str(i).zfill(5)}.jpg", normalize=True, range=(-1, 1))
 
     final_result = torch.cat([orig_img, inv_img, img_gen, mask])

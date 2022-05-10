@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9cec6271-2116-438b-9f1a-9b3283c92fa0" name="Changes" comment="Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makeup_env.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/makeup_env.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/demo.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/faceparsing/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/faceparsing/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/input_imgs/img1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/input_imgs/img2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/input_imgs/img3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/input_imgs/img4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/input_imgs/img5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/input_imgs/img6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/scripts/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/scripts/inference.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invimg/training/ranger.py" beforeDir="false" afterPath="$PROJECT_DIR$/invimg/training/ranger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optim.py" beforeDir="false" afterPath="$PROJECT_DIR$/optim.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/criteria/id_loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/criteria/id_loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimclip/mapper/training/ranger.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimclip/mapper/training/ranger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +68,7 @@
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/wangy/Desktop/thesis/makeup-clip&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -67,6 +82,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wangy\Desktop\thesis\makeup-clip" />
       <recent name="C:\Users\wangy\Desktop\thesis\makeup-clip\optimclip\models\stylegan2" />
     </key>
   </component>
@@ -100,7 +116,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PATH" value="/home/wangyuchi/anaconda3/envs/hyperstyle_env/bin" />
+        <env name="PATH" value="/home/wangyuchi/anaconda3/envs/makeup/bin" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -117,30 +133,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run_optimization" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="makeup-clip" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="PATH" value="/home/wangyuchi/anaconda3/envs/hyperstyle_env/bin" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/optimclip/optimization" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/optimclip/optimization/run_optimization.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="makeup-clip" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -148,7 +141,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/faceparsing" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -185,19 +178,16 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test (1)" />
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.run_optimization" />
       <item itemvalue="Python.inference" />
       <item itemvalue="Python.optim" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.optim" />
-        <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.inference" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.run_optimization" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.inference" />
       </list>
     </recent_temporary>
   </component>
@@ -235,6 +225,18 @@
       <workItem from="1651655071579" duration="25000" />
       <workItem from="1651668005117" duration="2505000" />
       <workItem from="1651721745847" duration="2572000" />
+      <workItem from="1651742824325" duration="487000" />
+      <workItem from="1651743338480" duration="531000" />
+      <workItem from="1651743891554" duration="726000" />
+      <workItem from="1651744642152" duration="69000" />
+      <workItem from="1651744729260" duration="1897000" />
+      <workItem from="1651750951445" duration="451000" />
+      <workItem from="1651810657460" duration="226000" />
+      <workItem from="1651919195708" duration="460000" />
+      <workItem from="1651919809462" duration="625000" />
+      <workItem from="1651924762925" duration="3242000" />
+      <workItem from="1652095325728" duration="6818000" />
+      <workItem from="1652153471132" duration="9239000" />
     </task>
     <task id="LOCAL-00001" summary="solve the problem of import_err">
       <created>1651061026910</created>
@@ -335,10 +337,11 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/makeup_clip$refinement_blocks.coverage" NAME="refinement_blocks Coverage Results" MODIFIED="1651058238772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg/models/hypernetworks" />
     <SUITE FILE_PATH="coverage/makeup_clip$restyle_e4e_encoders.coverage" NAME="restyle_e4e_encoders Coverage Results" MODIFIED="1651058229583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg/models/encoders" />
-    <SUITE FILE_PATH="coverage/makeup_clip$test__1_.coverage" NAME="test (1) Coverage Results" MODIFIED="1651492564670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/faceparsing" />
+    <SUITE FILE_PATH="coverage/makeup_clip$test__1_.coverage" NAME="test 覆盖结果" MODIFIED="1652106197933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/makeup_clip$run_optimization.coverage" NAME="run_optimization Coverage Results" MODIFIED="1651150626109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/optimclip/optimization" />
-    <SUITE FILE_PATH="coverage/makeup_clip$optim.coverage" NAME="optim Coverage Results" MODIFIED="1651499611168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/makeup_clip$optim.coverage" NAME="optim 覆盖结果" MODIFIED="1652169704662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/makeup_clip$inference.coverage" NAME="inference Coverage Results" MODIFIED="1651482392281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/invimg" />
+    <SUITE FILE_PATH="coverage/makeup_clip$test__2_.coverage" NAME="test 覆盖结果" MODIFIED="1651926202788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/makeup_clip$test.coverage" NAME="test Coverage Results" MODIFIED="1651474585922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/face-parsing" />
   </component>
 </project>

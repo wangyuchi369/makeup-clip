@@ -69,7 +69,10 @@ def evaluate(need, result_dir, dspth='./data', cp='model_final_diss.pth'):
         for image_path in os.listdir(dspth):
             img = Image.open(osp.join(dspth, image_path))
             image = img.resize((512, 512), Image.BILINEAR)
-            img = to_tensor(image)
+            try:
+                img = to_tensor(image)
+            except Exception:
+                print(image_path)
             img = torch.unsqueeze(img, 0)
             img = img.cuda()
             out = net(img)[0]
@@ -81,7 +84,7 @@ def evaluate(need, result_dir, dspth='./data', cp='model_final_diss.pth'):
             create_mask(parsing, need, os.path.join(result_dir, image_path))
 
 
-            # vis_parsing_maps(image, parsing, stride=1, save_im=True, save_path=osp.join(respth, image_path))
+            # vis_parsing_maps(image, parsing, stride=1, save_im=True, save_path=osp.join(result_dir, image_path))
 
 def create_mask(parsing, need, result_dir):
     new_parsing = np.ones_like(parsing) * 255

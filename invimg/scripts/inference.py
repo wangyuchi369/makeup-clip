@@ -19,7 +19,7 @@ from myutils.common import tensor2im
 from myutils.inference_utils import run_inversion
 from invimg.myutils.model_utils import load_model
 from options.test_options import TestOptions
-from run_option.option import Options
+from run_config.config import Options
 
 def invert():
     # test_opts = TestOptions().parse()

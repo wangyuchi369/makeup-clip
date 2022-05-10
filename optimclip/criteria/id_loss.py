@@ -7,7 +7,7 @@ from optimclip.models.facial_recognition.model_irse import Backbone
 class IDLoss(nn.Module):
     def __init__(self, opts):
         super(IDLoss, self).__init__()
-        print('Loading ResNet ArcFace')
+        # print('Loading ResNet ArcFace')
         self.facenet = Backbone(input_size=112, num_layers=50, drop_ratio=0.6, mode='ir_se')
         self.facenet.load_state_dict(torch.load(opts.id_model))
         self.pool = torch.nn.AdaptiveAvgPool2d((256, 256))

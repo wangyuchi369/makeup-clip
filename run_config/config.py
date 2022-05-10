@@ -17,8 +17,8 @@ class Options:
         self.parser.add_argument("--step", type=int, default=30, help="迭代次数")
         self.parser.add_argument("--latent_lambda", type=float, default=0.008,
                                  help="latent-code损失的系数")
-        self.parser.add_argument("--img_lambda", type=float, default=0, help="图片损失的系数")
-        self.parser.add_argument("--id_lambda", type=float, default=0.001, help="面部损失的系数")
+        self.parser.add_argument("--img_lambda", type=float, default=0.01, help="图片损失的系数")
+        self.parser.add_argument("--id_lambda", type=float, default=0.005, help="面部损失的系数")
         self.parser.add_argument("--results", type=str, default='result/opt/', help="结果放置的文件夹")
         self.parser.add_argument('--id_model', default='optimclip/pretrained_models/model_ir_se50.pth', type=str,
                                  help="图像识别网络")

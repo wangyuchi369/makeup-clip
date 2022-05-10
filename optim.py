@@ -14,9 +14,9 @@ from faceparsing.test import evaluate
 
 from PIL import Image
 from torchvision import transforms
-from run_option.option import Options
+from run_config.config import Options
 
-
+torch.cuda.set_device(0)
 # invert()
 
 def get_ganmodel(opts):
@@ -40,7 +40,7 @@ def get_init_latent(orig_pic):
     try:
         latents = np.load(latent_path, allow_pickle=True).item()
         latent_code = np.expand_dims(np.array(latents[orig_pic]), axis=0)
-    except FileNotFoundError:
+    except (FileNotFoundError, KeyError):
         invert()  # 没有当前图片的latent code，再invert一遍
         latents = np.load(latent_path, allow_pickle=True).item()
         latent_code = np.expand_dims(np.array(latents[orig_pic]), axis=0)
@@ -51,7 +51,7 @@ def get_init_latent(orig_pic):
     return latent_code_init, deltas
 
 
-def get_imgloss(region, orig_img, img_gen, mask):
+def get_imgloss(region, orig_img, img_gen, mask, opts):
     img_loss_sum = torch.sum(torch.square(orig_img - img_gen))
     img_loss = 0
     if region:
@@ -117,16 +117,16 @@ def optim(text, input_img, opts, region):
         optimizer.param_groups[0]["lr"] = lr
         img_gen, _ = gan_generator([latent], input_is_latent=True, randomize_noise=True, weights_deltas=deltas)
 
-        c_loss = clip_loss(img_gen, edit_text)
+        CLIP_loss = clip_loss(img_gen, edit_text)
         if opts.id_lambda > 0:
-            i_loss = id_loss(img_gen, inv_img)[0]
+            ID_loss = id_loss(img_gen, inv_img)[0]
         else:
-            i_loss = 0  # 不需要idloss就不跑模型了，节省时间
+            ID_loss = 0  # 不需要idloss就不跑模型了，节省时间
         latent_loss = ((latent_code_init - latent) ** 2).sum()
-        img_loss = get_imgloss(region, orig_img, img_gen, mask)
+        img_loss = get_imgloss(region, orig_img, img_gen, mask, opts)
         # print('latent_loss', latent_loss)
         # print('img_loss', img_loss)
-        loss = c_loss + opts.latent_lambda * latent_loss + opts.id_lambda * i_loss + opts.img_lambda * img_loss
+        loss = CLIP_loss + opts.latent_lambda * latent_loss + opts.id_lambda * ID_loss + opts.img_lambda * img_loss
 
         optimizer.zero_grad()
         loss.backward()
@@ -139,14 +139,34 @@ def optim(text, input_img, opts, region):
         )
         if opts.save_intermediate_image_every > 0 and i % opts.save_intermediate_image_every == 0:
             with torch.no_grad():
-                img_gen, _ = gan_generator([latent], input_is_latent=True, randomize_noise=True)
+                img_gen, _ = gan_generator([latent], input_is_latent=True,weights_deltas=deltas, randomize_noise=True)
             torchvision.utils.save_image(img_gen, f"result/opt/{str(i).zfill(5)}.jpg", normalize=True, range=(-1, 1))
+    if not region:
+        final_result = torch.cat([orig_img, inv_img, img_gen])
+    elif 'organ' in region:
+        final_result = torch.cat([orig_img, inv_img, img_gen, mask])
+    elif 'bbox' in region:
+        mask = torch.ones((1024,1024))
+        bbox = region['bbox']
+        mask[bbox[0]:bbox[1]][bbox[2]:bbox[3]] = 0
+        mask = mask.repeat(3,1,1).unsqueeze(0).cuda()
+        final_result = torch.cat([orig_img, inv_img, img_gen, mask])
 
-    final_result = torch.cat([orig_img, inv_img, img_gen, mask])
     torchvision.utils.save_image(final_result.detach().cpu(), os.path.join(opts.results, "final_result.jpg"),
                                  normalize=True, scale_each=True, range=(-1, 1))
     return final_result
 
+
 if __name__ == '__main__':
     opts = Options().get_args()
-    result = optim(text='a person with purple hair', input_img='input_img/img1.png', opts=opts, region={'organ': ['hair']})
+    result = optim(text='blue eyes', input_img='input_img/img1.png', opts=opts, region={'organ': ['hair']})
+    from torchvision.utils import make_grid
+    from torchvision.transforms import ToPILImage
+
+    result_image = ToPILImage()(
+        make_grid(result.detach().cpu(), normalize=True, scale_each=True, range=(-1, 1), padding=0))
+    h, w = result_image.size
+    result_image.resize((h // 2, w // 2))
+    import matplotlib.pyplot as plt
+    plt.imshow(result_image)
+    plt.show()
