@@ -77,3 +77,9 @@ instead of
 ```args = parser.parse_args()```
 
 [python - How to fix ipykernel_launcher.py: error: unrecognized arguments in jupyter? - Stack Overflow](https://stackoverflow.com/questions/48796169/how-to-fix-ipykernel-launcher-py-error-unrecognized-arguments-in-jupyter)
+
+### argparse的action参数
+
+[(5条消息) argparse模块中的action参数_Lavi_qq_2910138025的博客-CSDN博客_argparse的action](https://blog.csdn.net/liuweiyuxiang/article/details/82918911)
+
+如果指定参数出现，则action_true/false起作用（即true和false），如果参数不出现default起作用
