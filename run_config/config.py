@@ -39,9 +39,9 @@ class Options:
                                  help='原图片路径')
         self.parser.add_argument('--resize_outputs', action='store_true',
                                  help='Whether to resize outputs to 256x256 or keep at original output resolution')
-        self.parser.add_argument('--test_batch_size', default=2, type=int,
+        self.parser.add_argument('--test_batch_size', default=5, type=int,
                                  help='Batch size for testing and inference')
-        self.parser.add_argument('--test_workers', default=2, type=int,
+        self.parser.add_argument('--test_workers', default=3, type=int,
                                  help='Number of test/inference dataloader workers')
         self.parser.add_argument('--n_images', type=int, default=None,
                                  help='Number of images to output. If None, invert on all data')

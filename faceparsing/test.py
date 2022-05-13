@@ -67,12 +67,9 @@ def evaluate(need, result_dir, dspth='./data', cp='model_final_diss.pth'):
     ])
     with torch.no_grad():
         for image_path in os.listdir(dspth):
-            img = Image.open(osp.join(dspth, image_path))
+            img = Image.open(osp.join(dspth, image_path)).convert('RGB')
             image = img.resize((512, 512), Image.BILINEAR)
-            try:
-                img = to_tensor(image)
-            except Exception:
-                print(image_path)
+            img = to_tensor(image)
             img = torch.unsqueeze(img, 0)
             img = img.cuda()
             out = net(img)[0]

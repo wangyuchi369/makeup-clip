@@ -87,9 +87,6 @@ def evaluate(respth='./res/test_res', dspth='./data', cp='model_final_diss.pth')
 
 
 
-
-
-
 if __name__ == "__main__":
     setup_logger('./res')
     evaluate()

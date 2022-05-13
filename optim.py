@@ -15,7 +15,9 @@ from faceparsing.test import evaluate
 from PIL import Image
 from torchvision import transforms
 from run_config.config import Options
-
+seed = 0
+torch.manual_seed(seed)            # 为CPU设置随机种子
+torch.cuda.manual_seed_all(seed)   # 为所有GPU设置随机种子
 torch.cuda.set_device(0)
 # invert()
 
@@ -74,6 +76,7 @@ def get_imgloss(region, orig_img, img_gen, mask, opts):
 
 
 def optim(text, input_img, opts, region):
+    global final_result, img_gen
     c_loss_list = []
     img_loss_list = []
     id_loss_list = []
@@ -82,7 +85,7 @@ def optim(text, input_img, opts, region):
     # 分词并拼接
     edit_text = torch.cat([clip.tokenize(text)]).cuda()
 
-    orig_img = Image.open(input_img)
+    orig_img = Image.open(input_img).convert('RGB')
     convert = transforms.ToTensor()
     normalize = transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     orig_img = normalize(convert(orig_img))
@@ -175,23 +178,23 @@ def optim(text, input_img, opts, region):
         plt.plot(x, sum_loss_list, color='black', label='sum_loss')
         plt.legend()
         plt.xlabel('iteration times')
-        plt.ylabel('rate')
+        plt.ylabel('loss')
         plt.savefig(os.path.join(opts.opt_results, "loss.jpg"))
         plt.show()
-    return final_result
+    return final_result, orig_img, inv_img, img_gen
 
 
 if __name__ == '__main__':
     opts = Options().get_args()
-    result = optim(text='red hair', input_img='input_img/img3.png', opts=opts, region={'organ': ['hair']})
-    from torchvision.utils import make_grid
-    from torchvision.transforms import ToPILImage
-
-    result_image = ToPILImage()(
-        make_grid(result.detach().cpu(), normalize=True, scale_each=True, range=(-1, 1), padding=0))
-    h, w = result_image.size
-    result_image.resize((h // 2, w // 2))
-    import matplotlib.pyplot as plt
+    result = optim(text='red hair', input_img='input_img/img1.png', opts=opts, region={'organ': ['hair']})
+    # from torchvision.utils import make_grid
+    # from torchvision.transforms import ToPILImage
+    #
+    # result_image = ToPILImage()(
+    #     make_grid(result.detach().cpu(), normalize=True, scale_each=True, range=(-1, 1), padding=0))
+    # h, w = result_image.size
+    # result_image.resize((h // 2, w // 2))
+    # import matplotlib.pyplot as plt
     # plt.imshow(result_image)
     # plt.show()
 
